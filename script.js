@@ -66,23 +66,35 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Room price updater ─────────────────────── */
   const roomSelect = document.getElementById('hotel-room');
   const priceInput = document.getElementById('hotel-price');
+  const guestsInput = document.getElementById('hotel-guests');
 
   const roomPrices = {
-    standard: '1 200 CZK',
-    double:   '1 800 CZK',
-    suite:    '2 600 CZK'
+    '1 lůžkový': '1 200 CZK',
+    '2 lůžkový': '1 800 CZK',
+    '3 lůžkový': '2 600 CZK'
   };
 
-  if (roomSelect && priceInput) {
+  const updateGuests = () => {
+    if (!roomSelect || !guestsInput) return;
+    const value = roomSelect.value;
+    if (value.includes('1')) guestsInput.value = 1;
+    else if (value.includes('2')) guestsInput.value = 2;
+    else if (value.includes('3')) guestsInput.value = 3;
+  };
+
+  if (roomSelect) {
     roomSelect.addEventListener('change', () => {
-      priceInput.value = roomPrices[roomSelect.value] || '';
+      if (priceInput) priceInput.value = roomPrices[roomSelect.value] || '';
+      updateGuests();
     });
+    // Inicializace po načtení
+    updateGuests();
   }
 
   /* ── Sticky nav shadow on scroll ─────────────── */
-  const nav = document.getElementById('main-nav');
+  const nav = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
+    if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
   }, { passive: true });
 
   /* ── Scroll-reveal with IntersectionObserver ── */
@@ -97,5 +109,100 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.12 });
 
   revealEls.forEach(el => io.observe(el));
+
+  /* ── Mobile Menu Toggle ───────────────────────── */
+  const burgerBtn = document.getElementById('burger-btn');
+  const navLinks = document.getElementById('nav-links');
+
+  if (burgerBtn && navLinks) {
+    burgerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navLinks.classList.toggle('is-open');
+      burgerBtn.innerHTML = isOpen ? '&times;' : '&#9776;';
+    });
+
+    // Zavření menu kliknutím mimo
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && !burgerBtn.contains(e.target)) {
+        navLinks.classList.remove('is-open');
+        burgerBtn.innerHTML = '&#9776;';
+      }
+    });
+
+    // Zavření menu po kliknutí na odkaz
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('is-open');
+        burgerBtn.innerHTML = '&#9776;';
+      });
+    });
+  }
+
+  /* ── Large Group Hint ────────────────────────── */
+  const guestsSelect = document.getElementById('stul-guests');
+  const guestsHint = document.getElementById('guests-hint');
+
+  if (guestsSelect && guestsHint) {
+    guestsSelect.addEventListener('change', () => {
+      guestsHint.style.display = guestsSelect.value === '6+' ? 'block' : 'none';
+    });
+  }
+
+  /* ── Reservation Validation ───────────────────── */
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const minDateStr = tomorrow.toISOString().split('T')[0];
+  
+  const setupValidation = (formId, dateId, timeId) => {
+    const form = document.getElementById(formId);
+    const dateInput = document.getElementById(dateId);
+    const timeInput = document.getElementById(timeId);
+
+    if (dateInput) dateInput.min = minDateStr;
+
+    if (form && dateInput) {
+      form.addEventListener('submit', (e) => {
+        const timeVal = timeInput ? timeInput.value : "12:00";
+        if (!dateInput.value) return;
+
+        const selectedDateTime = new Date(`${dateInput.value}T${timeVal}`);
+        const now = new Date();
+
+        if (selectedDateTime - now < 24 * 60 * 60 * 1000) {
+          e.preventDefault();
+          alert("Omlouváme se, rezervace přijímáme minimálně 24 hodin předem. Prosím, vyberte si pozdější termín.");
+        }
+      });
+    }
+  };
+
+  setupValidation('form-stul', 'stul-date', 'stul-time');
+  setupValidation('form-hotel', 'hotel-prijezd');
+
+  /* ── Speciální validace pro příjezd/odjezd u hotelu ── */
+  const hotelPrijezd = document.getElementById('hotel-prijezd');
+  const hotelOdjezd = document.getElementById('hotel-odjezd');
+  const hotelForm = document.getElementById('form-hotel');
+
+  if (hotelPrijezd && hotelOdjezd) {
+    hotelPrijezd.addEventListener('change', () => {
+      if (hotelPrijezd.value) {
+        const minOdjezdDate = new Date(hotelPrijezd.value);
+        minOdjezdDate.setDate(minOdjezdDate.getDate() + 1);
+        hotelOdjezd.min = minOdjezdDate.toISOString().split('T')[0];
+        
+        if (hotelOdjezd.value && hotelOdjezd.value <= hotelPrijezd.value) {
+          hotelOdjezd.value = '';
+        }
+      }
+    });
+
+    hotelForm?.addEventListener('submit', (e) => {
+      if (hotelOdjezd.value && hotelPrijezd.value && hotelOdjezd.value <= hotelPrijezd.value) {
+        e.preventDefault();
+        alert("Datum odjezdu musí být minimálně jeden den po datumu příjezdu.");
+      }
+    });
+  }
 
 });

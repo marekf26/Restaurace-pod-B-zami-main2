@@ -15,17 +15,16 @@
 </head>
 <body>
 
-    <nav id="main-nav">
-        <a href="#" class="logo" aria-label="Restaurace Pod Břízami — načíst stránky">
-            Restaurace pod Břízami <span class="material-symbols-outlined">restaurant</span>
-        </a>
-        <ul class="nav-links">
+    <header class="navbar">
+        <div class="logo">Restaurace pod Břízami</div>
+        <button id="burger-btn">&#9776;</button>
+        <ul id="nav-links">
             <li><a href="#menu">Menu</a></li>
             <li><a href="#galerie">Galerie</a></li>
             <li><a href="#rezervace">Rezervace</a></li>
             <li><a href="#kontakt">Kontakt</a></li>
         </ul>
-    </nav>
+    </header>
 
     <header class="hero">
         <div class="hero-content">
@@ -119,7 +118,7 @@
         <div class="reservation-wrapper reveal" id="panel-stul" role="tabpanel" aria-labelledby="tab-stul">
             <div class="reservation-form">
                 <h3>Rezervace stolu</h3>
-                <p>Zajistěte si svůj stůl včas. Rezervace jsou závazné.</p>
+                <p>Rezervovat můžete 24h dopředu.</p>
                 <form action="https://formspree.io/f/mlgvayrj" method="POST" id="form-stul">
                     <div class="input-group">
                         <label for="stul-name">Jméno a příjmení</label>
@@ -149,11 +148,15 @@
                             <option value="5">5 osob</option>
                             <option value="6+">6 a více osob</option>
                         </select>
+                        <small id="guests-hint" style="color: #E86D2B; display: none; margin-top: 8px; font-weight: 500;">
+                            * Pro 6 a více osob prosím uveďte přesný počet do poznámek níže.
+                        </small>
                     </div>
                     <div class="input-group">
                         <label for="stul-note">Poznámka (alergie, přání…)</label>
                         <textarea id="stul-note" name="note" rows="3"></textarea>
                     </div>
+                    <p style="text-align: center; color: #757575; font-size: 0.9em; margin-bottom: 15px;">* E-maily kontrolujeme každé ráno. Vaši rezervaci vám potvrdíme co nejdříve.</p>
                     <button type="submit" class="btn btn-dark">Rezervovat stůl</button>
                 </form>
             </div>
@@ -165,57 +168,53 @@
         <div class="reservation-wrapper hidden" id="panel-hotel" role="tabpanel" aria-labelledby="tab-hotel">
             <div class="reservation-form">
                 <h3>Rezervace pokoje</h3>
-                <p>Přijďte a zůstaňte déle — ubytování přímo u restaurace.</p>
+                <p>Rezervovat můžete 24h dopředu.</p>
                 <form action="https://formspree.io/f/mlgvayrj" method="POST" id="form-hotel">
                     <div class="input-group">
                         <label for="hotel-name">Jméno a příjmení</label>
-                        <input type="text" id="hotel-name" name="name" required>
+                        <input type="text" id="hotel-name" name="Jméno a příjmení" required>
                     </div>
                     <div class="input-group">
                         <label for="hotel-email">E-mail</label>
-                        <input type="email" id="hotel-email" name="email" required>
+                        <input type="email" id="hotel-email" name="E-mail" required>
                     </div>
                     <div class="input-group">
                         <label for="hotel-phone">Telefon</label>
-                        <input type="tel" id="hotel-phone" name="phone" placeholder="+420 …">
+                        <input type="tel" id="hotel-phone" name="Telefon" placeholder="+420 …">
                     </div>
                     <div class="input-row">
                         <div class="input-group">
-                            <label for="hotel-checkin">Příjezd</label>
-                            <input type="date" id="hotel-checkin" name="checkin" required>
+                            <label for="hotel-prijezd">Příjezd</label>
+                            <input type="date" id="hotel-prijezd" name="Příjezd" required>
                         </div>
                         <div class="input-group">
-                            <label for="hotel-checkout">Odjezd</label>
-                            <input type="date" id="hotel-checkout" name="checkout" required>
+                            <label for="hotel-odjezd">Odjezd</label>
+                            <input type="date" id="hotel-odjezd" name="Odjezd" required>
                         </div>
                     </div>
                     <div class="input-row">
                         <div class="input-group">
                             <label for="hotel-room">Typ pokoje</label>
-                            <select id="hotel-room" name="room">
-                                <option value="standard">Jednolůžkový</option>
-                                <option value="double">Dvojlůžkový</option>
-                                <option value="suite">Třílůžkový</option>
+                            <select id="hotel-room" name="Typ pokoje">
+                                <option value="1 lůžkový">1 lůžkový</option>
+                                <option value="2 lůžkový" selected>2 lůžkový</option>
+                                <option value="3 lůžkový">3 lůžkový</option>
                             </select>
                         </div>
                         <div class="input-group">
                             <label for="hotel-guests">Počet hostů</label>
-                            <select id="hotel-guests" name="guests">
-                                <option value="1">1 osoba</option>
-                                <option value="2" selected>2 osoby</option>
-                                <option value="3">3 osoby</option>
-                                <option value="4">4 osoby</option>
-                            </select>
+                            <input type="number" id="hotel-guests" name="Počet osob" readonly value="2">
                         </div>
                     </div>
                     <div class="input-group">
                         <label for="hotel-price">Cena za noc</label>
-                        <input type="text" id="hotel-price" name="price" readonly value="1 200 CZK" class="price-display">
+                        <input type="text" id="hotel-price" name="Cena" readonly value="1 200 CZK" class="price-display">
                     </div>
                     <div class="input-group">
                         <label for="hotel-note">Poznámka (speciální požadavky…)</label>
-                        <textarea id="hotel-note" name="note" rows="3"></textarea>
+                        <textarea id="hotel-note" name="Poznámka" rows="3"></textarea>
                     </div>
+                    <p style="text-align: center; color: #757575; font-size: 0.9em; margin-bottom: 15px;">* E-maily kontrolujeme každé ráno. Vaši rezervaci vám potvrdíme co nejdříve.</p>
                     <button type="submit" class="btn btn-dark">Rezervovat pokoj</button>
                 </form>
             </div>
