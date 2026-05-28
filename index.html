@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pod Břízami - Restaurace Bezno</title>
+    <meta name="description" content="Zážitková gastronomie v srdci Bezna. Restaurace Pod Břízami — elegantní prostředí, sezónní kuchyně, ubytování.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav id="main-nav">
+        <a href="#" class="logo" aria-label="Restaurace Pod Břízami — načíst stránky">
+            Restaurace pod Břízami <span class="material-symbols-outlined">restaurant</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#rezervace">Rezervace</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Rodinná restaurace na kraji Bezna</h1>
+            <p>Celá rodina je výtaná.</p>
+            <a href="#rezervace" class="btn">Rezervovat stůl</a>
+        </div>
+    </header>
+
+    <!-- Stats strip -->
+    <div class="atmosphere-strip">
+        <div class="atm-item reveal">
+            <div class="atm-number">26</div>
+            <div class="atm-label">Let tradice</div>
+            <div class="atm-desc">Rodinná restaurace od roku 2000</div>
+        </div>
+        <div class="atm-item reveal reveal-delay-1">
+            <div class="atm-number">80</div>
+            <div class="atm-label">Míst k sezení</div>
+            <div class="atm-desc">Restaurace + terasa</div>
+        </div>
+        <div class="atm-item reveal reveal-delay-2">
+            <div class="atm-number">10</div>
+            <div class="atm-label">Pokojů</div>
+            <div class="atm-desc">Ubytování přímo v restauraci</div>
+        </div>
+    </div>
+
+    <section id="menu" class="container">
+        <h2 class="reveal">Dnešní menu</h2>
+        <span class="gold-rule reveal"></span>
+
+        <div class="menu-list">
+
+            <div class="menu-item reveal">
+                <div class="menu-text">
+                    <h3>Hovězí tatarák</h3>
+                    <p>Uzený žloutek, kapary, domácí brioška</p>
+                </div>
+                <div class="menu-price">380 CZK</div>
+            </div>
+
+            <div class="menu-item reveal">
+                <div class="menu-text">
+                    <h3>Pečený candát</h3>
+                    <p>Květákové pyré, beurre blanc, bylinkový olej</p>
+                </div>
+                <div class="menu-price">550 CZK</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galerie" class="gallery-section">
+        <div class="container gallery-header">
+            <h2 class="reveal">Galerie</h2>
+            <span class="gold-rule reveal"></span>
+        </div>
+        <div class="gallery-slider">
+            <button class="slider-btn prev-btn" aria-label="Předchozí">&#10094;</button>
+            <div class="slider-view">
+                <div class="slider-track">
+                    <div class="gallery-img gallery-item-1"></div>
+                    <div class="gallery-img gallery-item-2"></div>
+                    <div class="gallery-img gallery-item-3"></div>
+                    <div class="gallery-img gallery-item-4"></div>
+                    <div class="gallery-img gallery-item-5"></div>
+                    <div class="gallery-img gallery-item-6"></div>
+                </div>
+            </div>
+            <button class="slider-btn next-btn" aria-label="Další">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="rezervace" class="container">
+        <h2 class="reveal">Rezervace</h2>
+        <span class="gold-rule reveal"></span>
+
+        <!-- Přepínač -->
+        <div class="rez-tabs reveal" role="tablist">
+            <button class="rez-tab active" id="tab-stul" role="tab" aria-selected="true" aria-controls="panel-stul">
+                <span class="material-symbols-outlined">restaurant</span>
+                Rezervace stolu
+            </button>
+            <button class="rez-tab" id="tab-hotel" role="tab" aria-selected="false" aria-controls="panel-hotel">
+                <span class="material-symbols-outlined">bed</span>
+                Rezervace pokoje
+            </button>
+        </div>
+
+        <!-- Panel: Stůl -->
+        <div class="reservation-wrapper reveal" id="panel-stul" role="tabpanel" aria-labelledby="tab-stul">
+            <div class="reservation-form">
+                <h3>Rezervace stolu</h3>
+                <p>Zajistěte si svůj stůl včas. Rezervace jsou závazné.</p>
+                <form action="https://formspree.io/f/mlgvayrj" method="POST" id="form-stul">
+                    <div class="input-group">
+                        <label for="stul-name">Jméno a příjmení</label>
+                        <input type="text" id="stul-name" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="stul-email">E-mail</label>
+                        <input type="email" id="stul-email" name="email" required>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="stul-date">Datum</label>
+                            <input type="date" id="stul-date" name="date" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="stul-time">Čas</label>
+                            <input type="time" id="stul-time" name="time" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="stul-guests">Počet osob</label>
+                        <select id="stul-guests" name="guests">
+                            <option value="1">1 osoba</option>
+                            <option value="2" selected>2 osoby</option>
+                            <option value="3">3 osoby</option>
+                            <option value="4">4 osoby</option>
+                            <option value="5">5 osob</option>
+                            <option value="6+">6 a více osob</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="stul-note">Poznámka (alergie, přání…)</label>
+                        <textarea id="stul-note" name="note" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Rezervovat stůl</button>
+                </form>
+            </div>
+            <div class="reservation-img reservation-img-stul">
+            </div>
+        </div>
+
+        <!-- Panel: Hotel -->
+        <div class="reservation-wrapper hidden" id="panel-hotel" role="tabpanel" aria-labelledby="tab-hotel">
+            <div class="reservation-form">
+                <h3>Rezervace pokoje</h3>
+                <p>Přijďte a zůstaňte déle — ubytování přímo u restaurace.</p>
+                <form action="https://formspree.io/f/mlgvayrj" method="POST" id="form-hotel">
+                    <div class="input-group">
+                        <label for="hotel-name">Jméno a příjmení</label>
+                        <input type="text" id="hotel-name" name="name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="hotel-email">E-mail</label>
+                        <input type="email" id="hotel-email" name="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="hotel-phone">Telefon</label>
+                        <input type="tel" id="hotel-phone" name="phone" placeholder="+420 …">
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="hotel-checkin">Příjezd</label>
+                            <input type="date" id="hotel-checkin" name="checkin" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="hotel-checkout">Odjezd</label>
+                            <input type="date" id="hotel-checkout" name="checkout" required>
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="hotel-room">Typ pokoje</label>
+                            <select id="hotel-room" name="room">
+                                <option value="standard">Jednolůžkový</option>
+                                <option value="double">Dvojlůžkový</option>
+                                <option value="suite">Třílůžkový</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="hotel-guests">Počet hostů</label>
+                            <select id="hotel-guests" name="guests">
+                                <option value="1">1 osoba</option>
+                                <option value="2" selected>2 osoby</option>
+                                <option value="3">3 osoby</option>
+                                <option value="4">4 osoby</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="hotel-price">Cena za noc</label>
+                        <input type="text" id="hotel-price" name="price" readonly value="1 200 CZK" class="price-display">
+                    </div>
+                    <div class="input-group">
+                        <label for="hotel-note">Poznámka (speciální požadavky…)</label>
+                        <textarea id="hotel-note" name="note" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Rezervovat pokoj</button>
+                </form>
+            </div>
+            <div class="reservation-img reservation-img-hotel">
+            </div>
+        </div>
+    </section>
+
+    <section id="kontakt" class="map-section">
+        <div class="container">
+            <h2 class="reveal">Kde nás najdete</h2>
+            <span class="gold-rule reveal"></span>
+            <p class="section-lead reveal">Mělnická 153, Bezno, Czech Republic, 29429</p>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4280.23707497103!2d14.795252686148052!3d50.365730445577526!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470bfdac3982fccd%3A0x3b95912dafabde8e!2zUG9kIELFmcOtemFtaSoq!5e0!3m2!1scs!2scz!4v1779737943099!5m2!1scs!2scz" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li>
+                        <span class="material-symbols-outlined">phone</span>
+                        <a href="tel:+722723746">+420 722 723 746</a>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined">mail</span>
+                        <a href="mailto:hotel.bezno@seznam.cz">hotel.bezno@seznam.cz</a>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined">location_on</span>
+                        Mělnická 153, Bezno, Czech Republic, 29429
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Otevírací doba</h4>
+                <ul class="hours">
+                    <li><span>Po – Pá</span><span>08:00 – 18:00</span></li>
+                    <li><span>Sobota</span><span>11:00 – 15:00</span></li>
+                    <li><span>Neděle</span><span>Zavřeno</span></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Restaurace Pod Břízami. Všechna práva vyhrazena.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
