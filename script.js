@@ -148,6 +148,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── Dynamic Menu Loading (Google Sheets CSV) ── */
+  const MENU_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0LjWCVSV-F00GDC4xR-d_0_jQ9E1FkLFl6LdwFWV3BZ3UCvWZDC7FrQo9Un--3zyrb6q6Ro8BtISr/pub?output=csv";
+
+  async function loadDailyMenu() {
+    const container = document.getElementById('menu-container');
+    if (!container) return;
+
+    try {
+      const response = await fetch(MENU_CSV_URL);
+      if (!response.ok) throw new Error('Network response was not ok');
+      
+      const data = await response.text();
+      const rows = data.split('\n').slice(1); // Přeskočení hlavičky
+
+      let menuHtml = '';
+
+      rows.forEach(row => {
+        if (!row.trim()) return; // Přeskočení prázdných řádků
+        
+        const [nazev, gramaz, cena] = row.split(',');
+
+        if (nazev && cena) {
+          menuHtml += `
+            <div class="menu-item">
+              <div class="menu-info">
+                <span class="menu-name">${nazev.trim()}</span>
+                <span class="menu-weight">${gramaz ? gramaz.trim() : ''}</span>
+              </div>
+              <div class="menu-price">${cena.trim()}</div>
+            </div>
+          `;
+        }
+      });
+
+      container.innerHTML = menuHtml || '<p style="text-align: center;">Dnešní menu zatím není k dispozici.</p>';
+      
+    } catch (error) {
+      console.error('Chyba při načítání menu:', error);
+      container.innerHTML = '<p style="text-align: center; color: #E86D2B;">Menu se momentálně nepodařilo načíst.</p>';
+    }
+  }
+
+  loadDailyMenu();
+
   /* ── Reservation Validation ───────────────────── */
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);

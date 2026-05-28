@@ -411,73 +411,39 @@ h2 {
   margin: 0 auto;
 }
 
-.menu-category-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--gold-dark);
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  margin-bottom: 28px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.menu-category-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-
 .menu-item {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--border);
-  gap: 20px;
-  position: relative;
-  transition: background 0.25s;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.menu-item::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--gold);
-  transition: width 0.4s var(--ease-out);
+.menu-item:last-child {
+  border-bottom: none;
 }
 
-.menu-item:hover::after {
-  width: 100%;
+.menu-info {
+  display: flex;
+  flex-direction: column;
 }
 
-.menu-text h3 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 500;
-  color: var(--brown-deep);
-  margin-bottom: 3px;
+.menu-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 2px;
 }
 
-.menu-text p {
-  color: var(--stone);
+.menu-weight {
   font-size: 0.85rem;
-  letter-spacing: 0.02em;
+  color: #666;
 }
 
 .menu-price {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--gold-dark);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #E86D2B;
   white-space: nowrap;
 }
 
