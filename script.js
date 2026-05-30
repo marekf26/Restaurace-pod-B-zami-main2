@@ -149,44 +149,68 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── Dynamic Menu Loading (Google Sheets CSV) ── */
-  const MENU_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0LjWCVSV-F00GDC4xR-d_0_jQ9E1FkLFl6LdwFWV3BZ3UCvWZDC7FrQo9Un--3zyrb6q6Ro8BtISr/pub?output=csv";
+  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0LjWCVSV-F00GDC4xR-d_0_jQ9E1FkLFl6LdwFWV3BZ3UCvWZDC7FrQo9Un--3zyrb6q6Ro8BtISr/pub?output=csv";
 
   async function loadDailyMenu() {
     const container = document.getElementById('menu-container');
+    const dateEl = document.getElementById('menu-date');
     if (!container) return;
 
     try {
-      const response = await fetch(MENU_CSV_URL);
-      if (!response.ok) throw new Error('Network response was not ok');
+      const response = await fetch(CSV_URL);
+      const text = await response.text();
       
-      const data = await response.text();
-      const rows = data.split('\n').slice(1); // Přeskočení hlavičky
+      const rows = text.split(/\r?\n/).map(row => {
+        let cols = [];
+        let inQuotes = false;
+        let val = '';
+        for (let i = 0; i < row.length; i++) {
+          let char = row[i];
+          if (char === '"') inQuotes = !inQuotes;
+          else if (char === ',' && !inQuotes) {
+            cols.push(val);
+            val = '';
+          } else {
+            val += char;
+          }
+        }
+        cols.push(val);
+        return cols.map(c => c.trim().replace(/^"|"$/g, ''));
+      });
 
-      let menuHtml = '';
+      // Datum z buňky B1
+      if (dateEl && rows[0] && rows[0][1]) {
+        dateEl.textContent = rows[0][1];
+      }
 
-      rows.forEach(row => {
-        if (!row.trim()) return; // Přeskočení prázdných řádků
-        
-        const [nazev, gramaz, cena] = row.split(',');
+      // Data od 4. řádku (index 3)
+      const menuData = rows.slice(3);
+      let html = '';
 
-        if (nazev && cena) {
-          menuHtml += `
-            <div class="menu-item">
-              <div class="menu-info">
-                <span class="menu-name">${nazev.trim()}</span>
-                <span class="menu-weight">${gramaz ? gramaz.trim() : ''}</span>
+      menuData.forEach(row => {
+        if (row.length >= 3 && row[0] !== "") {
+          const nazevJidla = row[0];
+          const gramaz = row[1];
+          const cena = row[2];
+
+          html += `
+            <div class="food-item">
+              <div class="food-info">
+                <span class="food-name">${nazevJidla}</span>
+                <span class="food-weight">${gramaz}</span>
               </div>
-              <div class="menu-price">${cena.trim()}</div>
+              <div class="food-price-box">
+                <span class="food-price">${cena}</span>
+              </div>
             </div>
           `;
         }
       });
 
-      container.innerHTML = menuHtml || '<p style="text-align: center;">Dnešní menu zatím není k dispozici.</p>';
-      
+      container.innerHTML = html || '<p style="text-align: center;">Dnešní menu není k dispozici.</p>';
+
     } catch (error) {
       console.error('Chyba při načítání menu:', error);
-      container.innerHTML = '<p style="text-align: center; color: #E86D2B;">Menu se momentálně nepodařilo načíst.</p>';
     }
   }
 
