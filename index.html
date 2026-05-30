@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pod Břízami - Restaurace Bezno</title>
-    <meta name="description" content="Zážitková gastronomie v srdci Bezna. Restaurace Pod Břízami — elegantní prostředí, sezónní kuchyně, ubytování.">
+    <meta name="description" content="Rodinná restaurace na kraji Bezna. Restaurace Pod Břízami — elegantní prostředí, česká kuchyně, ubytování.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,17 +52,67 @@
             <div class="atm-desc">Ubytování přímo v restauraci</div>
         </div>
     </div>
+<section class="daily-menu-section" id="menu">
+  <div class="menu-card">
+    <div class="menu-header">
+      <p id="menu-date" class="menu-date">Načítám…</p>
+      <span class="gold-rule"></span>
+    </div>
 
-    <section id="menu" class="container">
-        <h2 id="menu-date" class="reveal">Dnešní menu</h2>
-        <span class="gold-rule reveal"></span>
+    <div id="menu-error" class="error-msg" hidden>Menu se nepodařilo načíst.</div>
 
-        <div id="menu-container" class="menu-list reveal">
-            <!-- Dynamicky načítaná jídla -->
-            <p style="text-align: center; color: var(--stone);">Načítám menu...</p>
-        </div>
-    </section>
+    <!-- Dnešní menu (vše za jednu cenu) -->
+    <div id="menu-dnesni" class="menu-block" hidden>
+      <div class="menu-block-head">
+        <h2 class="menu-block-title">Dnešní menu</h2>
+        <span id="menu-dnesni-cena" class="menu-block-price"></span>
+      </div>
+      <ul id="menu-dnesni-list" class="menu-dnesni-list"></ul>
+    </div>
 
+    <!-- Nabídka dne (jednotlivé ceny) -->
+    <div id="menu-nabidka" class="menu-block" hidden>
+      <h2 class="menu-block-title">Nabídka dne</h2>
+      <div id="menu-nabidka-list" class="menu-list"></div>
+    </div>
+
+    <!-- Pevná část (needituje se v tabulce) -->
+    <div class="menu-footer">
+      <p class="menu-vydej">Výdej hotových jídel od 10:30 – 14:30 hodin (pondělí – sobota)</p>
+
+      <ul class="menu-priplatky">
+        <li><span>Na stravenky vracíme do</span><span>+5,--</span></li>
+        <li><span>1 ks knedlík navíc</span><span>+6,--</span></li>
+        <li><span>kopeček rýže navíc</span><span>+15,--</span></li>
+        <li><span>změna přílohy</span><span>+15,--</span></li>
+        <li><span>pečivo (rohlík, krajíc chleba)</span><span>+6,--</span></li>
+        <li><span>menu box (polévka, jídlo, salát..)</span><span>+6,--</span></li>
+        <li><span>příbor (lžíce, vidlička + nůž)</span><span>+5,--</span></li>
+      </ul>
+
+      <details class="menu-alergeny">
+        <summary>Seznam alergenů <small>(stopové množství alergenu uvedeno v závorce)</small></summary>
+        <ol>
+          <li>obiloviny obsahující lepek a výrobky z nich</li>
+          <li>korýši a výrobky z nich</li>
+          <li>vejce a výrobky z nich</li>
+          <li>ryby a výrobky z nich</li>
+          <li>podzemnice olejná a výrobky z ní</li>
+          <li>sójové boby a výrobky z nich</li>
+          <li>mléko a výrobky z něj</li>
+          <li>skořápkové plody a výrobky z nich</li>
+          <li>celer a výrobky z něj</li>
+          <li>hořčice a výrobky z ní</li>
+          <li>sezam a výrobky z něj</li>
+          <li>oxid siřičitý a siřičitany</li>
+          <li>vlčí bob (lupina) a výrobky z něj</li>
+          <li>měkkýši a výrobky z nich</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+</section>
+  
     <section id="galerie" class="gallery-section">
         <div class="container gallery-header">
             <h2 class="reveal">Galerie</h2>
@@ -78,6 +128,10 @@
                     <div class="gallery-img gallery-item-4"></div>
                     <div class="gallery-img gallery-item-5"></div>
                     <div class="gallery-img gallery-item-6"></div>
+                    <div class="gallery-img gallery-item-7"></div>
+                    <div class="gallery-img gallery-item-8"></div>
+                    <div class="gallery-img gallery-item-9"></div>
+                    <div class="gallery-img gallery-item-10"></div>
                 </div>
             </div>
             <button class="slider-btn next-btn" aria-label="Další">&#10095;</button>

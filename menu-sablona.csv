@@ -1,0 +1,13 @@
+Typ,Název,Gramáž,Cena,Alergeny
+datum,Pátek 29. 5. 2026,,,
+menu-cena,,,"140,--",
+menu,Brokolicová polévka,,,
+menu,Uzená pečeně,,,
+menu,"hrachová kaše, okurka",,,
+polevka,Brokolicová,,"35,--",1
+jidlo,"Uzená pečeně, hrachová kaše, okurka",100g,"124,--","1,10"
+jidlo,"Vepřová játra na slanině
+houskový knedlík, rýže, brambory",100g,"124,--","1,3,7"
+jidlo,"Smažený květák, brambory m.m., okurka",100g,"124,--","1,3,7,10"
+jidlo,"Omeleta se špenátem
+brambory m.m., míchaný salát (okurka, rajče)",,"124,--","1,3,7"

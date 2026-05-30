@@ -386,49 +386,218 @@ h2 {
   transform: rotate(45deg);
   flex-shrink: 0;
 }
+/* --- DENNÍ MENU DESIGN --- */
+.daily-menu-section {
+    background-color: var(--parchment);
+    padding: 80px 20px;
+}
 
-/* ═══════════════════════════════════════════════════
-   MENU SECTION (DYNAMICKÉ CSV)
-═══════════════════════════════════════════════════ */
-.food-item {
+.menu-card {
+    background-color: var(--surface);
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(28px, 5vw, 52px);
+    box-shadow: 0 10px 40px rgba(62, 42, 20, 0.08);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.menu-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.menu-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 600;
+    color: var(--brown-deep);
+    letter-spacing: 0.01em;
+}
+
+/* Bloky (Dnešní menu / Nabídka dne) */
+.menu-block { margin-top: 40px; }
+.menu-block[hidden] { display: none; }
+
+.menu-block-head {
     display: flex;
+    align-items: baseline;
     justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #eaeaea;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
-.food-item:last-child {
-    border-bottom: none;
+.menu-block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--brown);
+    text-align: left;
+    margin: 0 0 14px;
+    position: relative;
+    padding-left: 16px;
 }
 
-.food-info {
+.menu-block-title::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 50%;
+    transform: translateY(-50%);
+    width: 4px; height: 1.1em;
+    background: linear-gradient(var(--gold-light), var(--gold-dark));
+    border-radius: 2px;
+}
+
+.menu-block-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--gold-dark);
+    white-space: nowrap;
+}
+
+/* Dnešní menu – seznam položek za jednu cenu */
+.menu-dnesni-list {
+    list-style: none;
+    padding: 18px 22px;
+    margin: 0;
+    background: var(--cream);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+
+.menu-dnesni-list li {
+    padding: 6px 0;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+/* Nabídka dne – položky s vlastní cenou */
+.menu-list {
     display: flex;
     flex-direction: column;
 }
 
-.food-name {
-    font-weight: bold;
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.menu-item:last-child { border-bottom: none; }
+
+.item-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.item-weight {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    letter-spacing: 0.04em;
+}
+
+.item-name {
+    font-weight: 500;
     font-size: 1.1rem;
-    color: #000;
+    color: var(--brown-deep);
+    line-height: 1.45;
 }
 
-.food-weight {
-    color: #666;
-    font-size: 0.9rem;
-    margin-top: 4px;
+.item-allergens {
+    font-size: 0.62em;
+    color: var(--stone);
+    margin-left: 4px;
+    font-weight: 400;
 }
 
-.food-price-box {
-    text-align: right;
-    margin-left: 20px;
-}
-
-.food-price {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #ea580c;
+.item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--gold-dark);
     white-space: nowrap;
+}
+
+/* Pevná spodní část */
+.menu-footer {
+    margin-top: 48px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+}
+
+.menu-vydej {
+    text-align: center;
+    font-weight: 500;
+    color: var(--brown);
+    margin-bottom: 24px;
+}
+
+.menu-priplatky {
+    list-style: none;
+    max-width: 440px;
+    margin: 0 auto 28px;
+    padding: 0;
+    font-size: 0.95rem;
+}
+
+.menu-priplatky li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 5px 0;
+    color: var(--text-soft);
+}
+
+.menu-priplatky li span:last-child {
+    font-weight: 600;
+    color: var(--brown);
+    white-space: nowrap;
+}
+
+.menu-alergeny {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+}
+
+.menu-alergeny summary {
+    cursor: pointer;
+    text-align: center;
+    color: var(--brown);
+    font-weight: 500;
+    list-style-position: inside;
+}
+
+.menu-alergeny small { font-weight: 400; color: var(--stone); }
+
+.menu-alergeny ol {
+    columns: 2;
+    column-gap: 28px;
+    margin: 16px auto 0;
+    max-width: 560px;
+    padding-left: 1.4em;
+}
+
+.menu-alergeny li {
+    padding: 3px 0;
+    break-inside: avoid;
+}
+
+.error-msg {
+    color: #b3261e;
+    text-align: center;
+    font-weight: 600;
+    padding: 20px;
+}
+.error-msg[hidden] { display: none; }
+
+@media (max-width: 560px) {
+    .menu-alergeny ol { columns: 1; }
+    .menu-block-head { gap: 4px; }
 }
 
 /* ═══════════════════════════════════════════════════
@@ -464,8 +633,8 @@ h2 {
 }
 
 .slider-track .gallery-img {
-  flex: 0 0 33.3333vw;
-  width: 33.3333vw;
+  flex: 0 0 calc(100% / 3);
+  width: calc(100% / 3);
   height: 58vh;
   min-height: 340px;
   background-size: cover;
@@ -493,8 +662,13 @@ h2 {
 .gallery-item-2 { background-image: url('images/terasa2.jpg'); }
 .gallery-item-3 { background-image: url('images/vchod.jpg'); }
 .gallery-item-4 { background-image: url('images/inter2.jpg'); }
-.gallery-item-5 { background-image: url('images/stul2.jpg'); }
-.gallery-item-6 { background-image: url('images/park1.jpg'); }
+.gallery-item-8 { background-image: url('images/stul2.jpg'); }
+.gallery-item-6 { background-image: url('images/reserve.jpg'); }
+.gallery-item-7 { background-image: url('images/reserv2.jpg'); }
+.gallery-item-5 { background-image: url('images/detsky.jpg'); }  
+.gallery-item-9 { background-image: url('images/jidlo.jpg'); }
+.gallery-item-10 { background-image: url('images/park1.jpg'); }
+
 
 /* Slider buttons — refined */
 .slider-btn {
@@ -936,7 +1110,8 @@ footer::before {
 @media (max-width: 768px) {
   .hero {
     background-attachment: scroll;
-    height: 85vh;
+    height: 60vh;
+    min-height: 360px;
   }
 
   .hero-content h1 {
@@ -944,8 +1119,8 @@ footer::before {
   }
 
   .slider-track .gallery-img {
-    flex: 0 0 100vw;
-    width: 100vw;
+    flex: 0 0 100%;
+    width: 100%;
     height: 44vh;
     min-height: 240px;
   }
@@ -987,10 +1162,11 @@ footer::before {
     grid-template-columns: 1fr;
     gap: 44px;
     padding: 56px 6%;
+    border-right: none;
   }
-}  border-right: none;
-  }
-}
+   }
+  
+
 
 @media (max-width: 768px) {
   nav {
@@ -1035,7 +1211,8 @@ footer::before {
 
   .hero {
     background-attachment: scroll;
-    height: 85vh;
+    height: 60vh;
+    min-height: 360px;
   }
 
   .hero-content h1 {
@@ -1043,8 +1220,8 @@ footer::before {
   }
 
   .slider-track .gallery-img {
-    flex: 0 0 100vw;
-    width: 100vw;
+    flex: 0 0 100%;
+    width: 100%;
     height: 44vh;
     min-height: 240px;
   }
@@ -1086,5 +1263,5 @@ footer::before {
     grid-template-columns: 1fr;
     gap: 44px;
     padding: 56px 6%;
-  }
-}
+    }
+     }
