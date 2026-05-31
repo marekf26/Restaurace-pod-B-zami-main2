@@ -167,6 +167,8 @@ h2 {
   font-size: 2rem;
   cursor: pointer;
   line-height: 1;
+  color: #2c2825;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (max-width: 768px) {
