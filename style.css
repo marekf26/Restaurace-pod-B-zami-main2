@@ -1112,105 +1112,31 @@ footer::before {
 }
 
 @media (max-width: 768px) {
-  .hero {
-    background-attachment: scroll;
-    height: 60vh;
-    min-height: 360px;
-  }
-
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-
-  .slider-track .gallery-img {
-    flex: 0 0 100%;
-    width: 100%;
-    height: 44vh;
-    min-height: 240px;
-  }
-
-  .atmosphere-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .atm-item:nth-child(2) {
-    border-right: none;
-  }
-
-  .atm-item:nth-child(3) {
-    grid-column: auto;
-  }
-
-  .atm-item {
-    border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 36px 24px;
-  }
-
-  .reservation-wrapper {
-    flex-direction: column;
-    padding: 32px 24px;
-    gap: 36px;
-  }
-
-  .reservation-img {
-    min-height: 260px;
-  }
-
-  .input-row {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .footer-inner {
-    grid-template-columns: 1fr;
-    gap: 44px;
-    padding: 56px 6%;
-    border-right: none;
-  }
-   }
-  
-
-
-@media (max-width: 768px) {
-  nav {
-    flex-direction: row;
-    padding: 18px 5%;
-    position: sticky;
-  }
-
-  #menu-toggle {
+  #burger-btn {
     display: block;
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    transform: translateY(-50%);
+    z-index: 999;
   }
 
-  .nav-links {
+  #nav-links {
     position: fixed;
     top: 0;
-    right: 0;
-    width: 280px;
+    right: -100%;
     height: 100vh;
-    background: var(--cream);
-    display: flex;
+    width: 250px;
+    background: #fdfaf5;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    box-shadow: -10px 0 40px rgba(0,0,0,0.1);
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 300;
+    padding: 80px 2rem 2rem;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    z-index: 998;
   }
 
-  body.nav-open .nav-links {
-    transform: translateX(0);
+  #nav-links.is-open {
+    right: 0;
   }
 
-  body.nav-open {
-    overflow: hidden;
+  #nav-links li {
+    margin-bottom: 1.5rem;
   }
 
   .hero {
@@ -1232,14 +1158,6 @@ footer::before {
 
   .atmosphere-strip {
     grid-template-columns: 1fr;
-  }
-
-  .atm-item:nth-child(2) {
-    border-right: none;
-  }
-
-  .atm-item:nth-child(3) {
-    grid-column: auto;
   }
 
   .atm-item {
@@ -1267,28 +1185,26 @@ footer::before {
     grid-template-columns: 1fr;
     gap: 44px;
     padding: 56px 6%;
-    }
-     }
-   /* --- GTranslate Premium Drip --- */
+  }
+}
+
+/* Výchozí stav pro jazyky */
+.mobile-languages { display: none; }
+.desktop-only { display: block; }
+
+/* --- GTranslate Premium Drip --- */
 .gtranslate_wrapper select {
-  /* Vypne hnusný defaultní vzhled prohlížeče */
   appearance: none;
   -webkit-appearance: none;
-  
-  /* Nový design a větší padding */
-  border: 1px solid #d1cac1; /* Jemný rámeček už v základu */
+  border: 1px solid #d1cac1;
   border-radius: 6px;
   background-color: transparent;
-  padding: 8px 36px 8px 16px; /* Top/Bottom 8px, Right 36px (pro šipku), Left 16px */
-  margin-top: 2px;
-  
-  /* Custom čistá šipka */
+  padding: 8px 36px 8px 16px;
+  margin: 0;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 16px;
-
-  /* Typografie z tvé navigace */
   font-family: inherit;
   font-weight: 600;
   text-transform: uppercase;
@@ -1297,23 +1213,14 @@ footer::before {
   color: #2c2825;
   cursor: pointer;
   outline: none;
-  
-  /* Plynulá animace pro hover */
   transition: all 0.3s ease;
 }
 
-/* Skryje první volbu "Select Language" */
 .gtranslate_wrapper select option:first-child {
   display: none;
 }
 
-/* Premium Hover efekt */
 .gtranslate_wrapper select:hover {
   border-color: #000;
-  background-color: rgba(0, 0, 0, 0.03); /* Velmi jemné ztmavení pozadí */
-}
-.gtranslate_wrapper select {
-  /* ... tvůj stávající kód (padding, border atd.) ... */
-  
-  margin: 0; /* Žádné odskoky */
+  background-color: rgba(0, 0, 0, 0.03);
 }

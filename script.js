@@ -12,6 +12,31 @@ gtScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js";
 gtScript.defer = true;
 document.body.appendChild(gtScript);
 
+// Odstranění "Select Language" z dropdownu po načtení
+const gtObserver = new MutationObserver(() => {
+  const select = document.querySelector('.gtranslate_wrapper select');
+  if (select && select.options.length > 0) {
+    // Hledáme a mažeme prázdnou nebo "Select Language" volbu
+    for (let i = 0; i < select.options.length; i++) {
+      if (select.options[i].value === '' || select.options[i].text.toLowerCase().includes('language') || select.options[i].text.toLowerCase().includes('vybrat')) {
+        select.options[i].remove();
+        break;
+      }
+    }
+    gtObserver.disconnect();
+  }
+});
+gtObserver.observe(document.body, { childList: true, subtree: true });
+
+// Funkce pro ruční přepnutí jazyka (použito na mobilu)
+function setLanguage(lang) {
+  const select = document.querySelector('.gtranslate_wrapper select');
+  if (select) {
+    select.value = `cs|${lang}`;
+    select.dispatchEvent(new Event('change'));
+  }
+}
+
 
 
 
