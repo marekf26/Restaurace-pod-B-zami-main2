@@ -1,6 +1,7 @@
 // --- GTranslate Přepínač Jazyků ---
 window.gtranslateSettings = {
   "default_language": "cs",
+  "detect_browser_language": false,
   "native_language_names": true,
   "languages": ["cs", "en", "de", "pl"],
   "wrapper_selector": ".gtranslate_wrapper"
