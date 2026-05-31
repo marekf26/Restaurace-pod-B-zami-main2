@@ -1216,6 +1216,7 @@ footer::before {
   transition: all 0.3s ease;
 }
 
+/* Skryje první volbu "Select Language", aby v seznamu nezavazela */
 .gtranslate_wrapper select option:first-child {
   display: none;
 }
