@@ -1,3 +1,20 @@
+// --- GTranslate Přepínač Jazyků ---
+window.gtranslateSettings = {
+  "default_language": "cs",
+  "native_language_names": true,
+  "languages": ["cs", "en", "de", "pl"],
+  "wrapper_selector": ".gtranslate_wrapper"
+};
+
+// Dynamické načtení externího GTranslate skriptu
+const gtScript = document.createElement('script');
+gtScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js";
+gtScript.defer = true;
+document.body.appendChild(gtScript);
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Gallery Slider ───────────────────────────── */
