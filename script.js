@@ -2,16 +2,12 @@
 window.gtranslateSettings = {
   "default_language": "cs",
   "detect_browser_language": false,
+  "wrapper_selector": ".gtranslate_wrapper",
   "native_language_names": true,
   "languages": ["cs", "en", "de", "pl"],
-  "wrapper_selector": ".gtranslate_wrapper"
+  "horizontal_position": "inline",
+  "dropdown_css": "https://cdn.gtranslate.net/widgets/latest/dropdown.css"
 };
-
-// Dynamické načtení externího GTranslate skriptu
-const gtScript = document.createElement('script');
-gtScript.src = "https://cdn.gtranslate.net/widgets/latest/dropdown.js";
-gtScript.defer = true;
-document.body.appendChild(gtScript);
 
 // Funkce pro ruční přepnutí jazyka (použito na mobilu)
 function setLanguage(lang) {
