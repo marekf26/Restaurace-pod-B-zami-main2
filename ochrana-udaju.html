@@ -92,14 +92,44 @@
     <script src="script.js?v=2"></script>
     <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
     <script>
+      // --- Brute-force GTranslate Fix ---
       setInterval(function() {
         const select = document.querySelector('.gtranslate_wrapper select');
         if (select && select.options.length > 0) {
           if (select.options[0].text.toLowerCase().includes('select')) {
             select.options[0].remove();
+            select.selectedIndex = 0;
           }
         }
       }, 50);
+
+      // --- Hamburger Menu Logic ---
+      document.addEventListener('DOMContentLoaded', function() {
+        const burgerBtn = document.getElementById('burger-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        if (burgerBtn && navLinks) {
+          burgerBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.toggle('is-open');
+            burgerBtn.innerHTML = isOpen ? '&times;' : '&#9776;';
+          });
+
+          document.addEventListener('click', function(e) {
+            if (!navLinks.contains(e.target) && !burgerBtn.contains(e.target)) {
+              navLinks.classList.remove('is-open');
+              burgerBtn.innerHTML = '&#9776;';
+            }
+          });
+
+          navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+              navLinks.classList.remove('is-open');
+              burgerBtn.innerHTML = '&#9776;';
+            });
+          });
+        }
+      });
     </script>
-    </body>
-    </html>
+</body>
+</html>
