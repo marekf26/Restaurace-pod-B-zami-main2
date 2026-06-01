@@ -172,17 +172,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   (function() {
-    const observer = new MutationObserver((mutations, obs) => {
+    const checkInterval = setInterval(() => {
       const select = document.querySelector('.gtranslate_wrapper select');
-      if (select && select.options.length > 0) {
-        select.options[0].textContent = 'ČEŠTINA';
-        obs.disconnect();
+      if (select) {
+        const placeholder = select.querySelector('option[value=""]');
+        if (placeholder) {
+          placeholder.remove();
+          clearInterval(checkInterval);
+        }
       }
-    });
-    const wrapper = document.querySelector('.gtranslate_wrapper');
-    if (wrapper) {
-      observer.observe(wrapper, { childList: true, subtree: true });
-    }
+    }, 100);
   })();
 
   /* ── Dynamic Menu Loading (Google Sheets CSV) ──
