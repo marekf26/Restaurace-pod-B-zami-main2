@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zásady ochrany osobních údajů - Restaurace pod Břízami</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3E%3Cpath d='M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo"><span class="material-symbols-outlined notranslate" translate="no">restaurant</span> Restaurace pod Břízami</a>
+        <button id="burger-btn">&#9776;</button>
+        <ul id="nav-links">
+            <li><a href="index.html#menu">Menu</a></li>
+            <li><a href="index.html#galerie">Galerie</a></li>
+            <li><a href="index.html#rezervace">Rezervace</a></li>
+            <li><a href="index.html#kontakt">Kontakt</a></li>
+            <li class="gtranslate_wrapper" style="margin-top: -2px;"></li>
+        </ul>
+    </header>
+
+    <main>
+        <div class="legal-content">
+            <h1>Zásady ochrany osobních údajů</h1>
+            
+            <h3>Kdo údaje sbírá</h3>
+            <p>Správcem osobních údajů je Jana Šoutová, provozující Restauraci pod Břízami na adrese mělnická 153, Bezno, Česká Republika, 29429.</p>
+            
+            <h3>Jaké údaje sbíráme a proč</h3>
+            <p>Přes náš rezervační formulář sbíráme pouze vaše jméno, e-mailovou adresu a telefonní číslo. Tyto údaje používáme výhradně za účelem vyřízení vaší rezervace.</p>
+            
+            <h3>Jak dlouho údaje držíme</h3>
+            <p>Vaše kontaktní údaje uchováváme pouze po dobu nezbytně nutnou pro vyřízení rezervace. Údaje nepředáváme třetím stranám.</p>
+            
+            <h3>Vaše práva</h3>
+            <p>Máte právo kdykoliv požádat o výmaz z naší databáze. Kontaktujte nás na e-mailu: hotel.bezno@seznam.cz.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li>
+                        <span class="material-symbols-outlined notranslate" translate="no">phone</span>
+                        <a href="tel:+722723746">+420 722 723 746</a>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined notranslate" translate="no">mail</span>
+                        <a href="mailto:hotel.bezno@seznam.cz">hotel.bezno@seznam.cz</a>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined notranslate" translate="no">location_on</span>
+                        Mělnická 153, Bezno, Czech Republic, 29429
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Otevírací doba</h4>
+                <ul class="hours">
+                    <li><span>Po – Pá</span><span>10:30 – 19:00</span></li>
+                    <li><span>Sobota</span><span>Dle dohody</span></li>
+                    <li><span>Neděle</span><span>Zavřeno</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Restaurace Pod Břízami. Všechna práva vyhrazena.</p>
+            <a href="ochrana-udaju.html" class="footer-legal-link">Zásady ochrany osobních údajů</a>
+        </div>
+    </footer>
+
+    <script src="script.js?v=2"></script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
+    <script>
+      setInterval(function() {
+        const select = document.querySelector('.gtranslate_wrapper select');
+        if (select && select.options.length > 0) {
+          if (select.options[0].text.toLowerCase().includes('select')) {
+            select.options[0].remove();
+          }
+        }
+      }, 50);
+    </script>
+    </body>
+    </html>

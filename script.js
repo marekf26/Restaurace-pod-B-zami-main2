@@ -171,37 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  (function() {
-    const checkInterval = setInterval(() => {
-      const select = document.querySelector('.gtranslate_wrapper select');
-      if (select && select.options.length > 0) {
-        // 1. Smazat placeholder (option bez hodnoty)
-        const placeholder = select.querySelector('option[value=""]');
-        if (placeholder) placeholder.remove();
-
-        // 2. Odstranit duplicity (GTranslate někdy dává aktuální jazyk dvakrát)
-        const seenValues = new Set();
-        Array.from(select.options).forEach(opt => {
-          const val = opt.value.split('|').pop(); // získáme kód jazyka (např. 'cs')
-          if (seenValues.has(val)) {
-            opt.remove();
-          } else {
-            seenValues.add(val);
-          }
-        });
-
-        // 3. Vynutit zobrazení Češtiny jako první (pokud tam je)
-        const csOption = Array.from(select.options).find(o => o.value.includes('|cs'));
-        if (csOption && select.firstChild !== csOption) {
-          select.prepend(csOption);
-          select.value = csOption.value;
-        }
-
-        clearInterval(checkInterval);
-      }
-    }, 100);
-  })();
-
   /* ── Dynamic Menu Loading (Google Sheets CSV) ──
      Hodnoty ve sloupci Typ (klient vybírá z předvyplněných):
        datum      → B = datum v záhlaví (např. "Pátek 29. 5. 2026")

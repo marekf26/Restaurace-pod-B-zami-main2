@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pod Břízami - Restaurace Bezno</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23000'%3E%3Cpath d='M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z'/%3E%3C/svg%3E">
     <meta name="description" content="Rodinná restaurace na kraji Bezna. Restaurace Pod Břízami — elegantní prostředí, česká kuchyně, ubytování.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +17,7 @@
 <body>
 
     <header class="navbar">
-        <div class="logo">Restaurace pod Břízami</div>
+        <a href="#" class="logo"><span class="material-symbols-outlined notranslate" translate="no">restaurant</span> Restaurace pod Břízami</a>
         <button id="burger-btn">&#9776;</button>
         <ul id="nav-links">
             <li><a href="#menu">Menu</a></li>
@@ -147,11 +148,11 @@
         <!-- Přepínač -->
         <div class="rez-tabs reveal" role="tablist">
             <button class="rez-tab active" id="tab-stul" role="tab" aria-selected="true" aria-controls="panel-stul">
-                <span class="material-symbols-outlined">restaurant</span>
+                <span class="material-symbols-outlined notranslate" translate="no">restaurant</span>
                 Rezervace stolu
             </button>
             <button class="rez-tab" id="tab-hotel" role="tab" aria-selected="false" aria-controls="panel-hotel">
-                <span class="material-symbols-outlined">bed</span>
+                <span class="material-symbols-outlined notranslate" translate="no">bed</span>
                 Rezervace pokoje
             </button>
         </div>
@@ -280,15 +281,15 @@
                 <h4>Kontakt</h4>
                 <ul>
                     <li>
-                        <span class="material-symbols-outlined">phone</span>
+                        <span class="material-symbols-outlined notranslate" translate="no">phone</span>
                         <a href="tel:+722723746">+420 722 723 746</a>
                     </li>
                     <li>
-                        <span class="material-symbols-outlined">mail</span>
+                        <span class="material-symbols-outlined notranslate" translate="no">mail</span>
                         <a href="mailto:hotel.bezno@seznam.cz">hotel.bezno@seznam.cz</a>
                     </li>
                     <li>
-                        <span class="material-symbols-outlined">location_on</span>
+                        <span class="material-symbols-outlined notranslate" translate="no">location_on</span>
                         Mělnická 153, Bezno, Czech Republic, 29429
                     </li>
                 </ul>
@@ -306,10 +307,21 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Restaurace Pod Břízami. Všechna práva vyhrazena.</p>
+            <a href="ochrana-udaju.html" class="footer-legal-link">Zásady ochrany osobních údajů</a>
         </div>
     </footer>
 
     <script src="script.js?v=2"></script>
     <script src="https://cdn.gtranslate.net/widgets/latest/dropdown.js" defer></script>
+    <script>
+      setInterval(function() {
+        const select = document.querySelector('.gtranslate_wrapper select');
+        if (select && select.options.length > 0) {
+          if (select.options[0].text.toLowerCase().includes('select')) {
+            select.options[0].remove();
+          }
+        }
+      }, 50);
+    </script>
 </body>
 </html>

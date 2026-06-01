@@ -133,6 +133,15 @@ h2 {
   font-size: 1.2rem;
   font-weight: 700;
   color: #000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar .logo .material-symbols-outlined {
+  font-size: 1.4rem;
+  color: var(--gold);
 }
 
 #nav-links {
@@ -1072,6 +1081,52 @@ footer::before {
   font-size: 1rem;
   color: rgba(255,255,255,0.4);
   letter-spacing: 0.04em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-legal-link {
+  font-size: 0.85rem;
+  color: #9e9689;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-legal-link:hover {
+  color: #fff;
+}
+
+.legal-content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 4rem 2rem;
+  background-color: #fdfaf5;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.legal-content h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--brown-deep);
+}
+
+.legal-content h3 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  margin-bottom: 0.8rem;
+  color: var(--brown);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.legal-content p {
+  margin-bottom: 1.2rem;
+  color: var(--text);
+  line-height: 1.8;
 }
 
 /* ═══════════════════════════════════════════════════
