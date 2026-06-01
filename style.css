@@ -1096,19 +1096,7 @@ footer::before {
    RESPONSIVE
 ═══════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .atmosphere-strip {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .atm-item:nth-child(2) {
-    border-right: none;
-  }
-
-  .atm-item:nth-child(3) {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    grid-column: span 2;
-    border-right: none;
-  }
+  /* Atmosphere strip removed from here to keep 3 columns until 768px */
 }
 
 @media (max-width: 768px) {
@@ -1158,12 +1146,18 @@ footer::before {
 
   .atmosphere-strip {
     grid-template-columns: 1fr;
+    display: grid; /* Back to grid for vertical stack */
+    overflow-x: visible;
   }
 
   .atm-item {
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 36px 24px;
+    padding: 40px 24px;
+  }
+
+  .atm-item:last-child {
+    border-bottom: none;
   }
 
   .reservation-wrapper {

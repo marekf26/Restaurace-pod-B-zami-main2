@@ -171,8 +171,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  (function() {
+    const observer = new MutationObserver((mutations, obs) => {
+      const select = document.querySelector('.gtranslate_wrapper select');
+      if (select && select.options.length > 0) {
+        select.options[0].textContent = 'ČEŠTINA';
+        obs.disconnect();
+      }
+    });
+    const wrapper = document.querySelector('.gtranslate_wrapper');
+    if (wrapper) {
+      observer.observe(wrapper, { childList: true, subtree: true });
+    }
+  })();
+
   /* ── Dynamic Menu Loading (Google Sheets CSV) ──
-     Tabulka má sloupce: A=Typ | B=Název | C=Gramáž | D=Cena | E=Alergeny
      Hodnoty ve sloupci Typ (klient vybírá z předvyplněných):
        datum      → B = datum v záhlaví (např. "Pátek 29. 5. 2026")
        menu-cena  → D = cena dnešního menu (např. "140,--")
