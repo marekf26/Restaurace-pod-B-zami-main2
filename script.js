@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
        polevka    → B = název, D = cena, E = alergeny
        jidlo      → B = název (Alt+Enter = druhý řádek), C = gramáž, D = cena, E = alergeny
      Prázdné řádky i řádek hlavičky se ignorují.                              */
-  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0LjWCVSV-F00GDC4xR-d_0_jQ9E1FkLFl6LdwFWV3BZ3UCvWZDC7FrQo9Un--3zyrb6q6Ro8BtISr/pub?output=csv";
+  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQEOyoCfGu7rRvQ8WBNGt7GEip3i-aXy8ZveZigcqVU5GpjUSe7IGfaINQZpqlKfBX5JUGns_b4yq0r/pub?gid=0&single=true&output=csv";
   const dateDisplay = document.getElementById('menu-date');
   const errorBox    = document.getElementById('menu-error');
   const dnesniBlock = document.getElementById('menu-dnesni');
